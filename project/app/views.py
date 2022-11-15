@@ -55,3 +55,19 @@ def uLogin(request):
     else:
         msg="user dose not exit"
         return render(request,'uregistration.html',{'msg':msg})
+
+
+def user_details_pk(request,pk=None):
+    user=UserDatabase.objects.get(id=pk)
+    serializer=UserDatabaseSerializer(user)
+    json_data= JSONRenderer().render(serializer.data)
+    return HttpResponse(json_data,content_type='application/json')
+    #return JsonResponse(serializer.data)
+
+def user_details_list(request):
+    user=UserDatabase.objects.all()
+    serializer=UserDatabaseSerializer(user,many=True)
+    #json_data= JSONRenderer().render(serializer.data)
+    #return HttpResponse(json_data,content_type='application/json')
+    return JsonResponse(serializer.data,safe=False)
+
