@@ -23,7 +23,7 @@ def insertUserDataBase(request):
         #First we check user is already exist or not
         user=UserDatabase.objects.filter(Email=email)
         if user:
-            msg= "User already exist"
+            msg= "This Email is already exist"
             return render(request,'uregistration.html',{'msg':msg})
         else:
             if password == cpassword:
