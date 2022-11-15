@@ -59,15 +59,15 @@ def uLogin(request):
 
 def user_details_pk(request,pk=None):
     user=UserDatabase.objects.get(id=pk)
-    serializer=UserDatabaseSerializer(user)
-    json_data= JSONRenderer().render(serializer.data)
+    python_data=UserDatabaseSerializer(user)
+    json_data= JSONRenderer().render(python_data.data)
     return HttpResponse(json_data,content_type='application/json')
-    #return JsonResponse(serializer.data)
+    #return JsonResponse(python_data.data)
 
 def user_details_list(request):
     user=UserDatabase.objects.all()
-    serializer=UserDatabaseSerializer(user,many=True)
-    #json_data= JSONRenderer().render(serializer.data)
+    python_data=UserDatabaseSerializer(user,many=True)
+    #json_data= JSONRenderer().render(python_data.data)
     #return HttpResponse(json_data,content_type='application/json')
-    return JsonResponse(serializer.data,safe=False)
+    return JsonResponse(python_data.data,safe=False)
 
