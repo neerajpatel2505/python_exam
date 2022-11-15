@@ -1,10 +1,47 @@
 <html>
-<head>
-    <title> Home Page</title>
-</head>
-<body>
-    <h1>Welcome to my home page!!!!!!!!!!!!!!!!</h1>
-</body>
 
+<head>
+    <title>Home Page</title>
+</head>
+
+<body bgcolor="lightblue">
+
+    <div>
+        <br />
+        <br />
+        <center>
+                
+            <div class="container">
+                <h1><u>Employee Management System (EMS)....!!!!!!</u></h1>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            
+            <div class='container'>
+                <h1>User</h1>
+                <form action="{% url 'uregistration' %}" method="post">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td><input type='submit' value='Registration'></td>
+                        </tr>
+                    </table>
+                </form>
+                <form action="{% url 'userloginpage' %}" method="post">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td><input type='submit' value='Login'></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            
+
+        </center>
+    </div>
+</body>
 
 </html>

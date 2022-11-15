@@ -1,9 +1,8 @@
-from models import UserDatabase
 from rest_framework import serializers
+from app import models
 
-class UserSerializer(serializers.ModelSerializer):
-    fname=serializers.CharField(max_length=100)
-    lname=serializers.CharField(max_length=100)
-    mobile=serializers.IntegerField()
-    email=serializers.EmailField()
-    password=serializers.CharField(max_length=100)
+class UserDatabaseSerializer(serializers.Serializer):
+    Firstname=serializers.CharField(max_length=100)
+    Lastname=serializers.CharField(max_length=100)
+    Email=serializers.EmailField(max_length=100)
+    Contact=serializers.IntegerField()
