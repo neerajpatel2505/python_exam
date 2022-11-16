@@ -4,11 +4,7 @@
 <body bgcolor="lightpink">
     <center>
         <h1> Welcome to user dashboard </h1>
-        Firstname : {{request.session.Firstname}}
         
-        Lastname : {{request.session.Lastname}}
-        
-        Email : {{request.session.Email}}
         <form action="{% url 'home' %}" method="post">
             {% csrf_token %}
             <table>
@@ -22,6 +18,19 @@
                 </tr>
             </table>
         </form>
+        <table>
+            <tr>
+                <td> Firstname :</td>
+                <td> {{request.session.Firstname}}</td>
+            </tr>
+            <tr>
+                <td> Lastname :</td>
+                <td> {{request.session.Lastname}}</td>
+            </tr>
+            <tr>
+                <td> Email Id : </td>
+                <td> {{request.session.Email}}</td>
+            </tr>
         
     </center>
 <body>
