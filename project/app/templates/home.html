@@ -21,7 +21,7 @@
             
             <div class='container'>
                 <h1>User</h1>
-                <form action="{% url 'uregistration' %}" method="post">
+                <form action="{% url 'eregistration' %}" method="post">
                     {% csrf_token %}
                     <table>
                         <tr>
@@ -29,7 +29,7 @@
                         </tr>
                     </table>
                 </form>
-                <form action="{% url 'userloginpage' %}" method="post">
+                <form action="{% url 'employeeloginpage' %}" method="post">
                     {% csrf_token %}
                     <table>
                         <tr>

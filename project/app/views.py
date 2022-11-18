@@ -1,6 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render,redirect
-from .models import UserDatabase
+from .models import EmployeeDatabase
 from .serializers import *
 from rest_framework.renderers import JSONRenderer
 
@@ -8,10 +8,10 @@ from rest_framework.renderers import JSONRenderer
 def homePageView(request):
     return render(request, 'home.html')
 
-def userRegistrationView(request):
-    return render(request, 'uregistration.html')
+def employeeRegistrationView(request):
+    return render(request, 'eregistration.html')
 
-def insertUserDataBase(request):
+def insertemployeeDataBase(request):
     if request.method=='POST':
         fname=request.POST['fname']
         lname=request.POST['lname']
@@ -21,52 +21,52 @@ def insertUserDataBase(request):
         cpassword=request.POST['cpassword']
         
         #First we check user is already exist or not
-        user=UserDatabase.objects.filter(Email=email)
+        user=EmployeeDatabase.objects.filter(Email=email)
         if user:
             msg= "This Email is already exist"
-            return render(request,'uregistration.html',{'msg':msg})
+            return render(request,'eregistration.html',{'msg':msg})
         else:
             if password == cpassword:
-                newuser = UserDatabase.objects.create(Firstname=fname,Lastname=lname,Email=email
+                newuser = EmployeeDatabase.objects.create(Firstname=fname,Lastname=lname,Email=email
                                     ,Contact=contact,Password=password)
                 msg = "User register Successfully"
                 return render(request,'home.html',{'msg':msg})
             else:
                 msg = "Password and Confirm Password Doesnot Match"
-                return render(request,"uregistration.html",{'msg':msg})
+                return render(request,"eregistration.html",{'msg':msg})
 
-def userLoginPage(request):
-    return render(request,'ulogin.html')
+def employeeLoginPage(request):
+    return render(request,'elogin.html')
 
-def uLogin(request):
+def eLogin(request):
     if request.method=='POST':
         email=request.POST['email']
         password=request.POST['password']
-        user=UserDatabase.objects.get(Email=email)
+        user=EmployeeDatabase.objects.get(Email=email)
         if user:
             if user.Password==password:
                 request.session['Firstname']=user.Firstname
                 request.session['Lastname']=user.Lastname
                 request.session['Email']=user.Email
-                return render(request,'userdashboard.html')
+                return render(request,'employeedashboard.html')
         else:
             msg="Invalid Email or Password"
-            return render(request,'ulogin.html',{'msg':msg})
+            return render(request,'elogin.html',{'msg':msg})
     else:
         msg="user dose not exit"
-        return render(request,'uregistration.html',{'msg':msg})
+        return render(request,'eregistration.html',{'msg':msg})
 
 
-def user_details_pk(request,pk=None):
-    user=UserDatabase.objects.get(id=pk)
-    python_data=UserDatabaseSerializer(user)
+def employee_details_pk(request,pk=None):
+    user=EmployeeDatabase.objects.get(id=pk)
+    python_data=EmployeeDatabaseSerializer(user)
     json_data= JSONRenderer().render(python_data.data)
     return HttpResponse(json_data,content_type='application/json')
     #return JsonResponse(python_data.data)
 
-def user_details_list(request):
-    user=UserDatabase.objects.all()
-    python_data=UserDatabaseSerializer(user,many=True)
+def employee_details_list(request):
+    user=EmployeeDatabase.objects.all()
+    python_data=EmployeeDatabaseSerializer(user,many=True)
     #json_data= JSONRenderer().render(python_data.data)
     #return HttpResponse(json_data,content_type='application/json')
     return JsonResponse(python_data.data,safe=False)

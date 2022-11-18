@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class UserDatabase(models.Model):
+class EmployeeDatabase(models.Model):
     Firstname=models.CharField(max_length=100)
     Lastname=models.CharField(max_length=100)
     Email=models.EmailField(max_length=100)
@@ -12,4 +12,4 @@ class UserDatabase(models.Model):
         return self.Firstname
    
     class Meta:
-        verbose_name_plural="UserDB"
+        verbose_name_plural="EmployeeDB"

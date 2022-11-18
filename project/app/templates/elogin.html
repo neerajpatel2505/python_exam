@@ -4,11 +4,11 @@
         Ulogin Page
     </title>
 </head>
-<body>
+<body bgcolor="lightpink">
 <center>
     <h1> Welcome to User login Page</h1>
     <h2 style="color:red">{{msg}}</h2>
-    <form action="{% url 'ulogin' %}" method="post">
+    <form action="{% url 'elogin' %}" method="post">
         {% csrf_token %}
     <table>
         <tr>

@@ -1,5 +1,8 @@
 <html>
-<head><title>User Registration</title></head>
+<head>
+    <title>User Registration</title>
+
+</head>
 <body bgcolor="lightpink">
     <center>
         <h1>Hi Welcome to User Registration Page</h1>
@@ -10,9 +13,8 @@
                     <td>
                         <input type='submit' value='Home Page'>
         </form>
-
         <h2 style="color:red">{{msg}}</h2>
-        <form action="{% url 'userinsert' %}" method='post'>
+        <form action="{% url 'employeeinsert' %}" method='post'>
             {% csrf_token %}
             <table>
                 <tr>
@@ -40,11 +42,8 @@
                     <td><input type='password' name='cpassword' required></td>
                 </tr>
                 <tr>
-                    <td>Register</td>
                     <td><input type='submit' value='Register'></td>
-                </tr>
+                </td>
         </form>
-        
     </center>
-
 </html>

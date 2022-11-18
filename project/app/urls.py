@@ -3,12 +3,12 @@ from app import views
 
 urlpatterns = [
     path('',views.homePageView,name='home'),
-    path('uregister/',views.userRegistrationView,name='uregistration'),
-    path('insert/',views.insertUserDataBase,name='userinsert'),
-    path('userloginpage/',views.userLoginPage,name='userloginpage'),
-    path('ulogin/',views.uLogin,name='ulogin'),
+    path('uregister/',views.employeeRegistrationView,name='eregistration'),
+    path('insert/',views.insertemployeeDataBase,name='employeeinsert'),
+    path('employeeloginpage/',views.employeeLoginPage,name='employeeloginpage'),
+    path('elogin/',views.eLogin,name='elogin'),
     
-    path('user_data/<int:pk>/',views.user_details_pk,name='user_data'),
-    path('user_list/',views.user_details_list,name='user_data'),
+    path('employee_data/<int:pk>/',views.employee_details_pk,name='employee_data'),
+    path('employee_list/',views.employee_details_list,name='employee_data'),
     
 ]
